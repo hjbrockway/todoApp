@@ -1,10 +1,10 @@
+<h2>Create Todo List</h2>
 
-
-    <h2>Create Todo List</h2>
-    <div ng-controller="TodoListController as todoList">
       <form name="addTodoForm" ng-submit="todoList.addTodo()">
         <fieldset class="addtodo">
+          <label>Add Todo
             <input type="text" ng-model="todoList.todoText"  size="30" placeholder="Enter task..." required >
+          </label>
             <p class="styled-select">
             <label>Priority
               <select ng-model="todoList.todoPriority">
@@ -20,4 +20,3 @@
             <input class="btn" ng-disabled="addTodoForm.$invalid" type="submit" value="Add">
         </fieldset>
       </form>
-    </div>

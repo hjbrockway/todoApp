@@ -12,84 +12,64 @@
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
     <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">-->
     <link rel="stylesheet" href="app.css">
-    <style>
-       .navbar { border-radius:0; }
-   </style>
   </head>
 
   <body ng-app="todoApp">
-hello!
+
+
   <!-- NAVIGATION -->
   <nav class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
-          <a class="navbar-brand" ui-sref="#">My To Do List</a>
+          <a class="navbar-brand">My To Do List</a>
       </div>
       <ul class="nav navbar-nav">
           <li><a ui-sref="create">Create</a></li>
-          <li><a ui-sref="list">List</a></li>
+          <li><a ui-sref="viewList">List</a></li>
       </ul>
   </nav>
 
   <!-- MAIN CONTENT -->
-  <div class="container">
+  <div class="container" ng-controller="TodoListController as todoList">
 
-      <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
       <div ui-view></div>
-
   </div>
+
+
+  <!--
+      <h2>Todo List</h2>
+      <div ng-controller="TodoListController as todoList">
+        <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+        [ <a href="" ng-click="todoList.archive()">archive</a> ]
+        <ul class="unstyled">
+          <li ng-repeat="todo in todoList.todos">
+            <label class="checkbox">
+              <input type="checkbox" ng-model="todo.done">
+              <span class="done-{{todo.done}}">{{todo.text}} is due {{todo.deadline}}</span>
+            </label>
+          </li>
+        </ul>
+
+
+        <form name="addTodoForm" ng-submit="todoList.addTodo()">
+          <fieldset class="addtodo">
+              <input type="text" ng-model="todoList.todoText"  size="30" placeholder="Enter task..." required >
+              <p class="styled-select">
+              <label>Priority
+                <select ng-model="todoList.todoPriority">
+                  <option value="normal">Normal</option>
+                  <option value="medium">Medium</option>
+                  <option value ="high">High</option>
+                </select>
+              </label>
+              </p>
+              <label>Deadline
+                <input type="text" ng-model="todoList.todoDeadline" size="30" placeholder="Enter deadline...">
+              </label>
+              <input class="btn" ng-disabled="addTodoForm.$invalid" type="submit" value="Add">
+          </fieldset>
+        </form>
+      </div> -->
 
   </body>
-  <!--
-  <body>
-
-<a ui-sref="create">Create todo list</a> <br>
-<a ui-sref="list">View to do list</a>
-
-<div ui-view></div>
-<!--
-  <div controller="tabCtrl">
-    <uib-tabset>
-      <uib-tab index="0" heading="Create Todos" ui-sref="create"><div ui-view></div></uib-tab>
-      <uib-tab index="1" heading="List Todos" ui-sref="list"><div ui-view></div></uib-tab>
-    </uib-tabset>
-  </div>
-
--->
-
-<!--
-    <h2>Todo List</h2>
-    <div ng-controller="TodoListController as todoList">
-      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-      [ <a href="" ng-click="todoList.archive()">archive</a> ]
-      <ul class="unstyled">
-        <li ng-repeat="todo in todoList.todos">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}} is due {{todo.deadline}}</span>
-          </label>
-        </li>
-      </ul>
-
-     // Add Todo Form
-      <form name="addTodoForm" ng-submit="todoList.addTodo()">
-        <fieldset class="addtodo">
-            <input type="text" ng-model="todoList.todoText"  size="30" placeholder="Enter task..." required >
-            <p class="styled-select">
-            <label>Priority
-              <select ng-model="todoList.todoPriority">
-                <option value="normal">Normal</option>
-                <option value="medium">Medium</option>
-                <option value ="high">High</option>
-              </select>
-            </label>
-            </p>
-            <label>Deadline
-              <input type="text" ng-model="todoList.todoDeadline" size="30" placeholder="Enter deadline...">
-            </label>
-            <input class="btn" ng-disabled="addTodoForm.$invalid" type="submit" value="Add">
-        </fieldset>
-      </form>
-    </div>
------>
 
 </html>
